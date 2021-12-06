@@ -1,62 +1,62 @@
-ProseMirror > * + * {
+.ProseMirror > * + * {
     margin-top: 0.75em;
 }
-ProseMirror ul, ProseMirror ol {
+.ProseMirror ul, .ProseMirror ol {
     padding: 0 1rem;
 }
-ProseMirror h1, ProseMirror h2, ProseMirror h3, ProseMirror h4, ProseMirror h5, ProseMirror h6 {
+.ProseMirror h1, .ProseMirror h2, .ProseMirror h3, .ProseMirror h4, .ProseMirror h5, .ProseMirror h6 {
     line-height: 1.1;
 }
-ProseMirror code {
+.ProseMirror code {
     background-color: rgba(97, 97, 97, 0.1);
     color: #616161;
 }
-ProseMirror pre {
+.ProseMirror pre {
     background: #0d0d0d;
     border-radius: 0.5rem;
     color: #fff;
     font-family: "JetBrainsMono", monospace;
     padding: 0.75rem 1rem;
 }
-ProseMirror pre code {
+.ProseMirror pre code {
     background: none;
     color: inherit;
     font-size: 0.8rem;
     padding: 0;
 }
-ProseMirror mark {
+.ProseMirror mark {
     background-color: #faf594;
 }
-ProseMirror img {
+.ProseMirror img {
     height: auto;
     max-width: 100%;
 }
-ProseMirror hr {
+.ProseMirror hr {
     margin: 1rem 0;
 }
-ProseMirror blockquote {
+.ProseMirror blockquote {
     border-left: 2px solid rgba(13, 13, 13, 0.1);
     padding-left: 1rem;
 }
-ProseMirror hr {
+.ProseMirror hr {
     border: none;
     border-top: 2px solid rgba(13, 13, 13, 0.1);
     margin: 2rem 0;
 }
-ProseMirror ul[data-type="taskList"] {
+.ProseMirror ul[data-type="taskList"] {
     list-style: none;
     padding: 0;
 }
-ProseMirror ul[data-type="taskList"] li {
+.ProseMirror ul[data-type="taskList"] li {
     align-items: center;
     display: flex;
 }
-ProseMirror ul[data-type="taskList"] li > label {
+.ProseMirror ul[data-type="taskList"] li > label {
     flex: 0 0 auto;
     margin-right: 0.5rem;
     user-select: none;
 }
-ProseMirror ul[data-type="taskList"] li > div {
+.ProseMirror ul[data-type="taskList"] li > div {
     flex: 1 1 auto;
 }
 
