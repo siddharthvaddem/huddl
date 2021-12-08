@@ -15,7 +15,7 @@ const TextEditor = () => {
           TaskList,
           TaskItem,
         ],
-        content: '<p>Hello World!</p>',
+        content: '<p>Start typing here..</p>',
       })
 
       return (
