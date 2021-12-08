@@ -1,5 +1,11 @@
+import TextEditor from "./components/TextEditor/TextEditor";
+
 function App() {
-  return <div className="App">Pbl Starter title</div>;
+  return <div className="App">
+    <TextEditor />
+  
+  
+  </div>;
 }
 
 export default App;
