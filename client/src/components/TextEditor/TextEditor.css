@@ -5,7 +5,8 @@
     color: #0d0d0d;
     display: flex;
     flex-direction: column;
-    max-height: 26rem;
+    height: 80%;
+
 }
 
 .editor-header {

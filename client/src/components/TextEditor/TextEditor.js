@@ -8,6 +8,8 @@ import './TextEditor.css'
 
 const TextEditor = () => {
 
+
+    //editor is used to get data and format the data
     const editor = useEditor({
         extensions: [
           StarterKit,
@@ -20,8 +22,12 @@ const TextEditor = () => {
 
       return (
         <div className='editor'>
+          {/*display menu bar only when the editor exits. Menu bar contains all the options to format the t
+          text document*/}
           {editor && <MenuBar editor={editor} />}
+          {/*editor content displays the text editor on the screen*/}
           <EditorContent className="editor-content" editor={editor} />
+          {/*footer to display the room details and number of users*/}
           <div className="editor-footer">
             Footer
           </div>
