@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { SocketContext } from '../SocketContext';
-const Notifications = () => {
+const Notification = () => {
   
   const {answerCall,call,callAccepted}=useContext(SocketContext);
 
   return (
     <>
-      {call.isReceivingCall && !callAccepted &&(
+      {call.isReceivingCall && !callAccepted && (
         <div>
           <h1>{call.name} is calling</h1>
           <button onClick={answerCall}>Answer</button>
@@ -16,4 +16,4 @@ const Notifications = () => {
   )
 };
 
-export default Notifications;
+export default Notification;

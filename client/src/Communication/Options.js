@@ -2,19 +2,18 @@ import React, { useContext, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { SocketContext } from '../SocketContext';
 const Options = ({ children }) => {
-  const { myself, callAccepted, callEnded, name, setName, leaveCall, callUser } = useContext(SocketContext);
+  const { me, callAccepted, callEnded, name, setName, leaveCall, callUser } = useContext(SocketContext);
   const [ idToCall, setIdToCall ] = useState('');
 
   return (
     <div>
       <form noValidate autoComplete="off">
         <input type="text" value={name} style={{ background: '#ffffe7' }} onChange={(e) => setName(e.target.value)} />
-        <CopyToClipboard text={myself}>
+        <CopyToClipboard text={me}>
           <button type="button">Copy your ID</button>
         </CopyToClipboard>
         <input
           type="text"
-          label="ID to call"
           value={idToCall}
           style={{ background: '#ffffe7' }}
           onChange={(e) => setIdToCall(e.target.value)}

@@ -1,6 +1,6 @@
 import TextEditor from './components/Texteditor/TextEditor';
 import Player from './Communication/Player';
-import Notification from './Communication/Notifications';
+import Notification from './Communication/Notification';
 import Options from './Communication/Options';
 function App() {
   return (

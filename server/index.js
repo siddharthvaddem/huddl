@@ -19,23 +19,20 @@ const io = new Server(server, {
 
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('Server is live');
-});
-
 server.listen(5000, () => console.log('Server listening on port 5000'));
 
-io.on('connection', (socket) => {
-  //callback function to get the specific socket
-  socket.emit('myself', socket.id); //socket.id to get our own id in the frontend
+app.get('/', (req, res) => {
+  res.send('Running');
+});
 
-  //socket handlers
+io.on('connection', (socket) => {
+  socket.emit('me', socket.id);
 
   socket.on('disconnect', () => {
     socket.broadcast.emit('callEnded');
   });
 
-  socket.on('calluser', ({ userToCall, signalData, from, name }) => {
+  socket.on('callUser', ({ userToCall, signalData, from, name }) => {
     io.to(userToCall).emit('callUser', { signal: signalData, from, name });
   });
 
