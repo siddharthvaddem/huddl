@@ -1,15 +1,19 @@
-import TextEditor from './components/TextEditor/TextEditor';
-import Player from './Communication/Player';
-import Notification from './Communication/Notification';
-import Options from './Communication/Options';
+import {Route, Routes} from 'react-router-dom'
+import RoomPage from './pages/RoomPage/RoomPage';
+import HomePage from './pages/HomePage/HomePage';
+
+
+
 function App() {
   return (
     <div className="App">
-      <TextEditor />
-      <Player />
-      <Options>
-        <Notification />
-      </Options>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/room' element={<RoomPage />} />
+          
+
+        
+      </Routes>
     </div>
   );
 }
