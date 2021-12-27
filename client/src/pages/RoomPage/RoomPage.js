@@ -8,7 +8,7 @@ const RoomPage = () => (
         <TextEditor />
         <Player />
         <Options>
-        <Notification />
+            <Notification />
         </Options>
     </div>
 );
