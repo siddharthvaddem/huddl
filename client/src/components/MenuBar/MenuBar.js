@@ -6,6 +6,7 @@ import MenuItem from "../Menu-item/Menu-item";
 import './MenuBar.css'
 
 
+//all the various formatting option available in the text editor
 const MenuBar = ({editor}) => {
     const items = [
         {
@@ -129,9 +130,11 @@ const MenuBar = ({editor}) => {
 
 
     return(
+      //maps over each element in the items list and creates a card for it
         <div className="editor-header">
             {items.map((item, index) => (
                 <Fragment key={index}>
+                {/*if the item is a divider then it would just draw a line instead of rendering a button */}
                 {item.type === 'divider' ? <div className="divider" /> : <MenuItem {...item} />}
                 </Fragment>
             ))}
