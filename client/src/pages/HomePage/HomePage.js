@@ -1,12 +1,12 @@
-
+import "./HomePage.css";
 const HomePage = () => (
+  <div className="d1">
     <div>
-        <h1>Welcome to huddl</h1>
-    
+      <button className="b1">Create room</button>
+      <br />
+      <input className="in1"></input> <button className="b2">Join</button>
     </div>
-
+  </div>
 );
-
-
 
 export default HomePage;
