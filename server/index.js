@@ -2,10 +2,12 @@
 //es6 init
 //https://socket.io/docs/v3/server-initialization/
 import express from 'express';
+import bodyParser from 'body-parser'
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 import cors from 'cors';
 import { disconnect } from 'process';
+import roomRoutes from './routes/room.js';
 
 const app = express();
 const server = createServer(app);
@@ -17,13 +19,19 @@ const io = new Server(server, {
   }
 });
 
+var id = 0;
+app.use(bodyParser.json({limit:"30mb",extended:true}));
+app.use(bodyParser.urlencoded({limit:"30mb",extended:true}));
 app.use(cors());
+app.use('/room',roomRoutes)
 
 server.listen(5000, () => console.log('Server listening on port 5000'));
 
 app.get('/', (req, res) => {
   res.send('Running');
 });
+
+
 
 io.on('connection', (socket) => {
   socket.emit('myself', socket.id);

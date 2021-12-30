@@ -2,16 +2,29 @@ import {Route, Routes} from 'react-router-dom'
 import RoomPage from './pages/RoomPage/RoomPage';
 import HomePage from './pages/HomePage/HomePage';
 import { ContextProvider } from './SocketContext';
+import {useState} from 'react'
+
+
+function RoomChecker({isRoomCreated}){
+  if(isRoomCreated){
+
+    return <ContextProvider><RoomPage /></ContextProvider>
+  } else{
+    return <h1>Room not created</h1>
+  }
+}
+
 
 
 
 function App() {
+  const [isRoomCreated,setIsRoomCreated] = useState(false);
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<HomePage />} />
+        <Route path='/' element={<HomePage isRoomCreated={isRoomCreated} setIsRoomCreated={setIsRoomCreated}/>} />
         
-          <Route path='/room' element={<ContextProvider><RoomPage /></ContextProvider>} />
+          <Route path='/room/:1' element={<RoomChecker isRoomCreated={isRoomCreated} />} />
         
           
 

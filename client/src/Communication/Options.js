@@ -10,14 +10,16 @@ const Options = ({ children }) => {
       <form noValidate autoComplete="off">
         <input type="text" value={name} style={{ background: '#ffffe7' }} onChange={(e) => setName(e.target.value)} />
         <CopyToClipboard text={myself}>
-          <button type="button">Copy your ID</button>
+          <button type="button">{myself}</button>
         </CopyToClipboard>
+     
         <input
           type="text"
           value={idToCall}
           style={{ background: '#ffffe7' }}
           onChange={(e) => setIdToCall(e.target.value)}
         />
+       
         {callAccepted && !callEnded ? (
           <button onClick={leaveCall}>Hang Up</button>
         ) : (
