@@ -24,6 +24,7 @@
     "socket.io-client": "^4.4.0",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2",
+    "y-indexeddb": "^9.0.6",
     "y-webrtc": "^10.2.2",
     "yjs": "^13.5.22"
   },
