@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import logo from "../../assets/logo.png";
 
+
 export default class Example extends React.Component {
   constructor(props) {
     super(props);
