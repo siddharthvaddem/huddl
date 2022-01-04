@@ -70,7 +70,9 @@ const TextEditor = () => {
   const [ status, setStatus ] = useState('connecting');
   const [ docID, setDocID ] = useState('');
   const [ docToFetch, setDocToFetch ] = useState('');
-  //const [fetchedData,setFetchedData]=useState({});
+  const [newDoc,setNewDoc]=useState('');
+
+  
   const [ currentUser, setCurrentUser ] = useState(getInitialUser);
   const [ json, setJson ] = useState({});
   const editor = useEditor({
@@ -118,27 +120,38 @@ const TextEditor = () => {
 
   const handleDB = async () => {
     try {
-      console.log(json);
+      //console.log(json);
       const loc = window.location.href;
       const roomcode = loc.substring(loc.lastIndexOf('/') + 1);
-      //console.log(roomcode);
+      //check if the docid already exists. if it does then update doc else writeDoc
+      //console.log(docID) 
+      if(docID==='')
+      {
       const data = { json, roomcode };
       const response = await api.saveDoc({ data: data });
       setDocID(response.data.key);
+      }
+      else{
+        const data={docID,json,roomcode};
+        await api.updateDoc(data);
+        }
     } catch (error) {
       console.log(error);
     }
   };
 
   const fetchDoc=async()=>{
+    
+      
     try{
-      console.log(docToFetch)
+      //console.log(docToFetch)
+      if(docToFetch==='')
+      alert("Doc to be fetched cannot be empty")
       const response=await api.getDoc({id:docToFetch});
        setDocToFetch('');
        setDocID(response.data.key);
-  
        const data=response.data.json
-       console.log(data);
+       //console.log(data);
        editor.commands.setContent(data);
       
     }
@@ -147,6 +160,34 @@ const TextEditor = () => {
     }
   }
 
+  const handleNewDoc=()=>{
+    setDocID('');
+    editor.commands.setContent({
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Start typing here."
+            }
+          ]
+        }
+      ]
+    });
+  }
+
+  // const handleDelete= async()=>{
+  //     try{
+  //       await api.deleteDoc({id:docID});
+  //       //setDocID('');
+  //     }
+  //     catch(error)
+  //     {
+  //       console.log(error) 
+  //     }
+  // }
   const setName = useCallback(
     () => {
       const name = (window.prompt('Name') || '').trim().substring(0, 32);
@@ -177,6 +218,13 @@ const TextEditor = () => {
         }
     />
     <button onClick={fetchDoc} >Doc to fetch</button>
+    { docID!=='' &&(
+      <>
+    <button onClick={handleNewDoc} >Open new Doc</button>
+    {/* <button onClick={handleDelete} >Delete current Doc</button> */}
+    </>
+    )
+    }
     <div className="editor">
       {/*display menu bar only when the editor exits. Menu bar contains all the options to format the t
         text document*/}

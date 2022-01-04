@@ -13,13 +13,13 @@ export const createDoc = async (req, res) => {
   res.status(201).json(insertedDoc);
 };
 
-// export const updateDoc = async (req, res) => {
-//   const { id } = req.params;
-//   const { data } = req.body;
-//   const toPut = { key: id, data };
-//   const newItem = await db.put(toPut);
-//   return res.json(newItem);
-// };
+export const updateDoc = async (req, res) => {
+  //console.log(req.body);
+  const { docID, json, roomcode } = req.body;
+  const toPut = { key: docID, json, roomcode };
+  const newItem = await db.put(toPut);
+  return res.json(toPut);
+};
 
 export const getDoc = async (req, res) => {
   // const id = '0em4ht29wvh3';
@@ -29,10 +29,19 @@ export const getDoc = async (req, res) => {
   //const { id } = req.params;
   const doc = await db.get(id);
   //const doc = data.json;
-  console.log(doc);
+  // console.log(doc);
   if (doc) {
     res.json(doc);
   } else {
     res.status(404).json({ message: 'user not found' });
   }
+};
+
+export const deleteDoc = async (req, res) => {
+  console.log(req.body);
+  //const { id } = req.body;
+  // console.log(id);
+
+  // await db.delete(id);
+  // res.json({ message: 'deleted' });
 };

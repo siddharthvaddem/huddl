@@ -8,5 +8,8 @@ export const joinRoom = (joinRoomId) => axios.post(`${url}/room/joinRoom`, joinR
 
 export const saveDoc = (data) => axios.post(`${url}/docs`, data);
 
-//export const updateDoc=(data) =>axios.put(`{url}/docs/update/${id}`,data);
+export const updateDoc = (data) => axios.patch(`${url}/docs`, data);
+
 export const getDoc = (id) => axios.post(`${url}/docs/fetch`, id);
+
+//export const deleteDoc = (id) => axios.delete(`${url}/docs`, id);
