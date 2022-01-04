@@ -68,6 +68,9 @@ const getInitialUser = () => {
 
 const TextEditor = () => {
   const [ status, setStatus ] = useState('connecting');
+  const [ docID, setDocID ] = useState('');
+  const [ docToFetch, setDocToFetch ] = useState('');
+  //const [fetchedData,setFetchedData]=useState({});
   const [ currentUser, setCurrentUser ] = useState(getInitialUser);
   const [ json, setJson ] = useState({});
   const editor = useEditor({
@@ -118,13 +121,31 @@ const TextEditor = () => {
       console.log(json);
       const loc = window.location.href;
       const roomcode = loc.substring(loc.lastIndexOf('/') + 1);
-      console.log(roomcode);
+      //console.log(roomcode);
       const data = { json, roomcode };
-      await api.saveDoc({ data: data });
+      const response = await api.saveDoc({ data: data });
+      setDocID(response.data.key);
     } catch (error) {
       console.log(error);
     }
   };
+
+  const fetchDoc=async()=>{
+    try{
+      console.log(docToFetch)
+      const response=await api.getDoc({id:docToFetch});
+       setDocToFetch('');
+       setDocID(response.data.key);
+  
+       const data=response.data.json
+       console.log(data);
+       editor.commands.setContent(data);
+      
+    }
+    catch(error){
+        console.log(error)
+    }
+  }
 
   const setName = useCallback(
     () => {
@@ -138,12 +159,32 @@ const TextEditor = () => {
   );
 
   return (
+    <>
+    { docID!=='' && docToFetch==='' &&
+      <h4>Doc ID- {docID}</h4>
+    }
+    { docID==='' && docToFetch!=='' &&
+      <h4>Doc ID- {docToFetch}</h4>
+      
+    }
+    <input
+         type="text"
+         value={docToFetch}
+         style={{ background: '#ffffe7' }}
+         placeholder='ENTER DOC ID'
+         onChange={
+         (e) => {setDocToFetch(e.target.value)}
+        }
+    />
+    <button onClick={fetchDoc} >Doc to fetch</button>
     <div className="editor">
       {/*display menu bar only when the editor exits. Menu bar contains all the options to format the t
         text document*/}
       {editor && <MenuBar editor={editor} />}
       {/*editor content displays the text editor on the screen*/}
+      
       <EditorContent className="editor-content" editor={editor} />
+     
 
       {/*footer to display the room details and number of users*/}
       <div className="editor-footer">
@@ -166,7 +207,8 @@ const TextEditor = () => {
         <button onClick={handleDB}>Save</button>
       </div>
     </div>
-  );
+  
+    </>);
 };
 
 export default TextEditor;

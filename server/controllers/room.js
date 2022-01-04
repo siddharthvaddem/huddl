@@ -4,7 +4,7 @@ export const createRoom = async (req, res) => {
   const room = req.body;
   roomId = room.id;
   res.status(201).json(room.id);
-  console.log(roomId);
+  //console.log(roomId);
 };
 
 export const joinRoom = async (req, res) => {
