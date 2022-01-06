@@ -67,7 +67,7 @@
     background-color: transparent;
     border: none;
     border-radius: 0.4rem;
-    color: #008080;
+    color: white;
     height: 1.75rem;
     margin-right: 0.25rem;
     padding: 0.25rem;
@@ -85,6 +85,6 @@
 
 
 .menu-item:hover,.menu-item.is-active {
-    background-color: #008080;
-    color: #fff;
+    background-color: white;
+    color: rgb(225, 27, 92);
 }
