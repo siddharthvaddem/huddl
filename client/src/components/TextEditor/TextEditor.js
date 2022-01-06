@@ -178,16 +178,17 @@ const TextEditor = () => {
     });
   }
 
-  // const handleDelete= async()=>{
-  //     try{
-  //       await api.deleteDoc({id:docID});
-  //       //setDocID('');
-  //     }
-  //     catch(error)
-  //     {
-  //       console.log(error) 
-  //     }
-  // }
+   const handleDelete= async()=>{
+       try{
+        // console.log(docID);
+         await api.deleteDoc({id:docID});
+         setDocID('');
+       }
+       catch(error)
+       {
+         console.log(error) 
+       }
+   }
   const setName = useCallback(
     () => {
       const name = (window.prompt('Name') || '').trim().substring(0, 32);
@@ -221,7 +222,7 @@ const TextEditor = () => {
     { docID!=='' &&(
       <>
     <button onClick={handleNewDoc} >Open new Doc</button>
-    {/* <button onClick={handleDelete} >Delete current Doc</button> */}
+     <button onClick={handleDelete} >Delete current Doc</button>
     </>
     )
     }

@@ -23,7 +23,7 @@ export const updateDoc = async (req, res) => {
 
 export const getDoc = async (req, res) => {
   // const id = '0em4ht29wvh3';
-  const { id } = req.body;
+  const id = req.params.id;
   //console.log(id);
 
   //const { id } = req.params;
@@ -38,10 +38,7 @@ export const getDoc = async (req, res) => {
 };
 
 export const deleteDoc = async (req, res) => {
-  console.log(req.body);
-  //const { id } = req.body;
-  // console.log(id);
-
-  // await db.delete(id);
-  // res.json({ message: 'deleted' });
+  const id = req.params.id;
+  await db.delete(id);
+  res.json({ message: 'deleted' });
 };
