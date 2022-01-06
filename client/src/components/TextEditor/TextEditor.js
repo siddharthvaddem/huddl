@@ -12,6 +12,7 @@ import { WebrtcProvider } from 'y-webrtc';
 import './TextEditor.css';
 import { IndexeddbPersistence } from 'y-indexeddb';
 import * as api from '../../api/index';
+import swal from 'sweetalert';
 
 const colors = [ '#958DF1', '#F98181', '#FBBC88', '#FAF594', '#70CFF8', '#94FADB', '#B9F18D' ];
 const rooms = [ 'rooms.10', 'rooms.11', 'rooms.12' ];
@@ -70,9 +71,9 @@ const TextEditor = () => {
   const [ status, setStatus ] = useState('connecting');
   const [ docID, setDocID ] = useState('');
   const [ docToFetch, setDocToFetch ] = useState('');
-  const [newDoc,setNewDoc]=useState('');
+  //const [newDoc,setNewDoc]=useState('');
 
-  
+  const [finishStatus, setfinishStatus] = useState(false);
   const [ currentUser, setCurrentUser ] = useState(getInitialUser);
   const [ json, setJson ] = useState({});
   const editor = useEditor({
@@ -103,6 +104,20 @@ const TextEditor = () => {
     },
     [ editor, currentUser ]
   );
+  const onBackButton = (e) => {
+   
+    e.preventDefault();
+    if (!finishStatus) {
+            setfinishStatus(true)
+            setTimeout(window.location.reload(),10000);
+          }
+  }
+  useEffect(() => {
+    window.addEventListener('popstate', onBackButton);
+    return () => {
+      window.removeEventListener('popstate', onBackButton);  
+    };
+  }, []);
 
   useEffect(
     () => {
@@ -146,7 +161,8 @@ const TextEditor = () => {
     try{
       //console.log(docToFetch)
       if(docToFetch==='')
-      alert("Doc to be fetched cannot be empty")
+      swal ( "Oops" ,  "Doc to be fetched cannot be empty!" ,  "error" )
+      //alert("Doc to be fetched cannot be empty")
       const response=await api.getDoc({id:docToFetch});
        setDocToFetch('');
        setDocID(response.data.key);
@@ -183,6 +199,20 @@ const TextEditor = () => {
         // console.log(docID);
          await api.deleteDoc({id:docID});
          setDocID('');
+         editor.commands.setContent({
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Start typing here..."
+                }
+              ]
+            }
+          ]
+        });
        }
        catch(error)
        {
