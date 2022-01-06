@@ -1,8 +1,19 @@
-import React from 'react'
+import React,{useState} from 'react'
 
-const NavBar = () => {
+function Rooms({roomId}) {
+    console.log("room id " + roomId)
+    if (roomId) {
+      return <h4 className='bg-white text-indigo-400 rounded px-2 py-2 '>ROOM ID : {roomId}</h4>
+    }
+    return <a href="#" class="text-xl block py-2 pr-4 pl-3 text-gray-200 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-200 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-200">About</a>;;
+  }
+
+
+
+const NavBar = ({roomId}) => {
+    
     return (
-        <nav class=" px-2 sm:px-4 py-2.5 bg-rose-600">
+        <nav class=" px-2 sm:px-4 py-2.5 bg-indigo-400">
             <div class="container flex flex-wrap justify-between items-center mx-auto">
                 <a href="#" class="flex">
                     <span class="self-center text-3xl whitespace-nowrap dark:text-white font-Montserrat font-black">HUDDL</span>
@@ -15,10 +26,7 @@ const NavBar = () => {
                 <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
                 <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                     <li>
-                    <a href="#" class="text-xl block py-2 pr-4 pl-3 text-gray-200 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-200 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-200">About</a>
-                    </li>
-                    <li>
-                    <a href="#" class="text-xl block py-2 pr-4 pl-3 text-gray-200 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-200 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-200">Contact</a>
+                        <Rooms roomId={roomId}/>
                     </li>
                 </ul>
                 </div>

@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import * as api from '../../api/index'
 import NavBar from '../../components/NavBar/NavBar';
 
-import { ReactComponent as Productive} from '../../assets/scene.svg'
+import { ReactComponent as Productive} from '../../assets/frontpic.svg'
 
 
 
@@ -19,10 +19,8 @@ const HomePage =  ({isRoomCreated,setIsRoomCreated}) => {
 
 
     const handleCreateRoom = async () => {
-       // console.log(uuidv4())
         const currentRoomId = uuidv4() 
         try{
-            
             const {data} = await api.createRoom({id:currentRoomId})
             if(data === currentRoomId){
                 setIsRoomCreated(true)
@@ -49,18 +47,18 @@ const HomePage =  ({isRoomCreated,setIsRoomCreated}) => {
     return(
         <>
             <div >
-
+                <NavBar  roomId={roomId}/>
                 <div className='container mx-auto flex justify-between items-center py-5'>
                     <div className='flex flex-col'>
-                        <button className="bg-rose-700 hover:bg-rose-500 text-white font-bold py-3 px-16 rounded m-4" onClick={handleCreateRoom}>{roomId}CREATE ROOM</button>
+                        <button className="bg-indigo-400 hover:bg-indigo-700 text-white font-bold py-3 px-16 rounded m-4" onClick={handleCreateRoom}>{roomId}CREATE ROOM</button>
                         <div className="flex items-center ">
                             <input
-                                className = "bg-black appearance-none rounded-md border-rose-500   py-3 px-6 m-4 text-white leading-tight focus:outline-none focus:bg-rose-700 focus:border-rose-700 border-4"
+                                className = "bg-black appearance-none rounded-md border-indigo-400   py-3 px-6 m-4 text-white leading-tight focus:outline-none focus:bg-indigo-200 focus:border-indigo-200 border-4"
                                 type="text"
                                 value={idToCall}
                                 placeholder='ENTER ROOM CODE'
                                 onChange={(e) => {setIdToCall(e.target.value)}}/>
-                            <button className="flex-shrink-0 bg-rose-700 hover:bg-rose-500 font-bold py-4 px-7 m-3  text-sm text-white rounded" onClick={handleJoinRoom}>JOIN ROOM</button>
+                            <button className="flex-shrink-0 bg-indigo-400 hover:bg-indigo-700 font-bold py-4 px-7 m-3  text-sm text-white rounded" onClick={handleJoinRoom}>JOIN ROOM</button>
                         </div>
                     </div>
                     <Productive className="h-128"/>

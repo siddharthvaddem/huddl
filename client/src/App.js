@@ -21,7 +21,7 @@ function App() {
   const [isRoomCreated,setIsRoomCreated] = useState(false);
   return (
     <div className="App">
-    <NavBar />
+    
       <Routes>
         <Route path='/' element={<HomePage isRoomCreated={isRoomCreated} setIsRoomCreated={setIsRoomCreated}/>} />
         <Route path='/room/:1' element={<RoomChecker isRoomCreated={isRoomCreated} />} />
