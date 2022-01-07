@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import RoomPage from './pages/RoomPage/RoomPage';
 import HomePage from './pages/HomePage/HomePage';
 import AboutPage  from './pages/AboutPage/AboutPage';
+import Error404 from './pages/Error404/Error404';
 import { useState, useEffect } from 'react';
 import * as api from './api/index';
 
@@ -26,7 +27,7 @@ function RoomChecker({ isRoomCreated }) {
   if (session) {
     return <RoomPage />;
   } else {
-    return <h1 style={{ color: 'white' }}>Room not created</h1>;
+    return <Error404 />;
   }
 }
 
