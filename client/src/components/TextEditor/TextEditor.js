@@ -232,16 +232,7 @@ const TextEditor = () => {
 
   return (
     <>
-    { docID!=='' && docToFetch==='' &&
-      <h4>Doc ID- {docID}</h4>
-    }
-    { docID==='' && docToFetch!=='' &&
-      <h4>Doc ID- {docToFetch}</h4>
-      
-    }
-    
-   
-    <div className="editor">
+      <div className="editor">
       {/*display menu bar only when the editor exits. Menu bar contains all the options to format the t
         text document*/}
       {editor && <MenuBar editor={editor} />}
@@ -254,20 +245,26 @@ const TextEditor = () => {
       <div className="editor-footer flex flex-row ">
         
         <div className="editor__name">
-          <button className="px-3 mx-3 py-2 hover:bg-rose-500 hover:text-white bg-white text-black rounded font-bold" onClick={setName}>{currentUser.name}</button>
+          <button className="px-3 mx-3 py-2 hover:bg-indigo-400 hover:text-white bg-white text-black rounded font-bold" onClick={setName}>{currentUser.name}</button>
         </div>
+        { docID!=='' && docToFetch==='' &&
+          <h4 className='bg-white text-indigo-400 rounded px-2 py-2 '>DOC ID:{docID}</h4>
+        }
+        { docID==='' && docToFetch!=='' &&
+          <h4 className="bg-white text-indigo-400 rounded px-2 py-2 ">DOC ID:{docToFetch}</h4>
+        }
         <div className='editor__crud flex flex-row '>
-          <button className="px-3 mx-3 hover:bg-rose-500 hover:text-white bg-white text-black rounded font-bold"  onClick={handleDB}>SAVE</button>
+          <button className="px-3 mx-3 hover:bg-indigo-400 hover:text-white bg-white text-black rounded font-bold"  onClick={handleDB}>SAVE</button>
           <input
               type="text"
               value={docToFetch}
-              className="bg-black appearance-none rounded-md border-rose-600   py-1 px-6  text-white leading-tight focus:outline-none focus:bg-rose-700 focus:border-rose-700 border-4" 
+              className="bg-black appearance-none rounded-md border-black   py-1 px-6  text-black leading-tight focus:outline-none focus:bg-indigo-200 focus:border-indigo-200 border-4" 
               placeholder='ENTER DOC ID'
               onChange={
               (e) => {setDocToFetch(e.target.value)}
               }
           />
-          <button onClick={fetchDoc}  className="px-3 mx-3 hover:bg-rose-500 bg-white text-black rounded font-bold" >FETCH</button>
+          <button onClick={fetchDoc}  className="px-3 mx-3 hover:bg-indigo-400 bg-white text-black rounded font-bold" >FETCH</button>
           { docID!=='' &&
             (
               <>

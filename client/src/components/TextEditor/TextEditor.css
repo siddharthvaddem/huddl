@@ -1,7 +1,7 @@
 .editor {
     background-color: #fff;
-    background-color: rgb(225, 29, 72);
-    border: 3px solid rgb(225, 29, 72);
+    background-color: rgb(129, 140, 248);
+    border: 3px solid rgb(129, 140, 248);
     border-radius: 0.75rem;
     color: #0d0d0d;
     display: flex;
@@ -14,7 +14,7 @@
 
 .editor-header {
     align-items: center;
-    border-bottom: 3px solid rgb(225, 29, 72);
+    border-bottom: 3px solid rgb(129, 140, 248);
     display: flex;
     flex: 0 0 auto;
     flex-wrap: wrap;
@@ -36,7 +36,7 @@
 
 .editor-footer {
    
-    border-top: 3px solid rgb(225, 29, 72);
+    border-top: 3px solid rgb(129, 140, 248);
     color: white;
     display: flex;
     flex: 0 0 auto;
