@@ -40,6 +40,8 @@ const HomePage =  ({isRoomCreated,setIsRoomCreated}) => {
             }
         }catch(error){
             console.log(error)
+            alert("Wrong room code try again");
+            setIdToCall("")
         }
     }
 
