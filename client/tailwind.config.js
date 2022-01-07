@@ -1,17 +1,16 @@
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: [ './src/**/*.{js,jsx,ts,tsx}' ],
   theme: {
     extend: {
       fontFamily: {
-        Pacifico: ["Pacifico", "cursive"],
-        Montserrat: ["Montserrat", "sans-serif"],
+        Pacifico: [ 'Pacifico', 'cursive' ],
+        Montserrat: [ 'Montserrat', 'sans-serif' ],
+        Sarina: [ 'Sarina', 'cursive' ]
       },
       height: {
-        '128': '35em',
-      },
-    },
+        '128': '35em'
+      }
+    }
   },
-  plugins: [],
-}
+  plugins: []
+};

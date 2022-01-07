@@ -50,7 +50,8 @@ const HomePage =  ({isRoomCreated,setIsRoomCreated}) => {
                 <NavBar  roomId={roomId}/>
                 <div className='container mx-auto flex justify-between items-center py-5'>
                     <div className='flex flex-col'>
-                        <button className="bg-indigo-400 hover:bg-indigo-700 text-white font-bold py-3 px-16 rounded m-4" onClick={handleCreateRoom}>{roomId}CREATE ROOM</button>
+                    <div className='text-white py-3 px-6 m-2 font-Montserrat text-4xl'>HUDDL YOUR ONE STOP REALTIME COLLAB TOOL</div>
+                        <button className="bg-indigo-400 hover:bg-indigo-700 text-white font-bold py-3 px-16 w-1/2 rounded m-4" onClick={handleCreateRoom}>{roomId}CREATE ROOM</button>
                         <div className="flex items-center ">
                             <input
                                 className = "bg-black appearance-none rounded-md border-indigo-400   py-3 px-6 m-4 text-white leading-tight focus:outline-none focus:bg-indigo-200 focus:border-indigo-200 border-4"
