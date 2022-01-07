@@ -3,7 +3,7 @@ import React from 'react'
 function Rooms({roomId}) {
     console.log("room id " + roomId)
     if (roomId) {
-      return <h4 className='bg-white text-indigo-400 rounded px-2 py-2 '>ROOM ID : {roomId}</h4>
+      return <h4 className='bg-white text-indigo-400 rounded px-2 py-2 '>ROOM ID :{roomId}</h4>
     }
    return (
     <a
