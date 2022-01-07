@@ -1,17 +1,20 @@
 .editor {
     background-color: #fff;
-    border: 3px solid #008080;
+    background-color: rgb(225, 29, 72);
+    border: 3px solid rgb(225, 29, 72);
     border-radius: 0.75rem;
     color: #0d0d0d;
     display: flex;
     flex-direction: column;
     height: 80%;
+    margin: 2rem;
+
 
 }
 
 .editor-header {
     align-items: center;
-    border-bottom: 3px solid #008080;
+    border-bottom: 3px solid rgb(225, 29, 72);
     display: flex;
     flex: 0 0 auto;
     flex-wrap: wrap;
@@ -22,25 +25,30 @@
     flex: 1 1 auto;
     overflow-x: hidden;
     overflow-y: auto;
+    background-color: black;
+    color: white;
     padding: 1.25rem 1rem;
+    min-height: 50%;
     -webkit-overflow-scrolling: touch;
 
 }
 
 
 .editor-footer {
-    align-items: center;
-    border-top: 3px solid #008080;
-    color: #008080;
+   
+    border-top: 3px solid rgb(225, 29, 72);
+    color: white;
     display: flex;
     flex: 0 0 auto;
     font-size: 12px;
     flex-wrap: wrap;
     font-weight: 600;
     justify-content: space-between;
+    align-items: center;
     padding: 0.25rem 0.75rem;
     white-space: nowrap;
 }
+
 .ProseMirror:focus{
     outline: none;
 }

@@ -239,23 +239,8 @@ const TextEditor = () => {
       <h4>Doc ID- {docToFetch}</h4>
       
     }
-    <input
-         type="text"
-         value={docToFetch}
-         style={{ background: '#ffffe7' }}
-         placeholder='ENTER DOC ID'
-         onChange={
-         (e) => {setDocToFetch(e.target.value)}
-        }
-    />
-    <button onClick={fetchDoc} >Doc to fetch</button>
-    { docID!=='' &&(
-      <>
-    <button onClick={handleNewDoc} >Open new Doc</button>
-     <button onClick={handleDelete} >Delete current Doc</button>
-    </>
-    )
-    }
+    
+   
     <div className="editor">
       {/*display menu bar only when the editor exits. Menu bar contains all the options to format the t
         text document*/}
@@ -266,24 +251,33 @@ const TextEditor = () => {
      
 
       {/*footer to display the room details and number of users*/}
-      <div className="editor-footer">
-        <div className={`editor__status editor__status--${status}`}>
-          {status === 'connected' ? (
-            `${editor.storage.collaborationCursor.users.length} user${editor.storage.collaborationCursor.users
-              .length === 1
-              ? ''
-              : 's'} online in ${room}`
-          ) : (
-            'offline'
-          )}
-        </div>
+      <div className="editor-footer flex flex-row ">
+        
         <div className="editor__name">
-          <button onClick={setName}>{currentUser.name}</button>
+          <button className="px-3 mx-3 py-2 hover:bg-rose-500 hover:text-white bg-white text-black rounded font-bold" onClick={setName}>{currentUser.name}</button>
         </div>
-      </div>
-      <div>
-        {' '}
-        <button onClick={handleDB}>Save</button>
+        <div className='editor__crud flex flex-row '>
+          <button className="px-3 mx-3 hover:bg-rose-500 hover:text-white bg-white text-black rounded font-bold"  onClick={handleDB}>SAVE</button>
+          <input
+              type="text"
+              value={docToFetch}
+              className="bg-black appearance-none rounded-md border-rose-600   py-1 px-6  text-white leading-tight focus:outline-none focus:bg-rose-700 focus:border-rose-700 border-4" 
+              placeholder='ENTER DOC ID'
+              onChange={
+              (e) => {setDocToFetch(e.target.value)}
+              }
+          />
+          <button onClick={fetchDoc}  className="px-3 mx-3 hover:bg-rose-500 bg-white text-black rounded font-bold" >FETCH</button>
+          { docID!=='' &&
+            (
+              <>
+                <button className="px-3 mx-3 hover:bg-rose-500 bg-white text-black rounded font-bold" onClick={handleNewDoc} >NEW</button>
+                <button className="px-3 mx-3 hover:bg-rose-500 bg-white text-black rounded font-bold" onClick={handleDelete} >DELETE</button>
+              </>
+            )
+          }
+        </div>
+
       </div>
     </div>
   
