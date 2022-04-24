@@ -3,16 +3,18 @@ import RoomPage from './pages/RoomPage/RoomPage';
 import HomePage from './pages/HomePage/HomePage';
 import AboutPage  from './pages/AboutPage/AboutPage';
 import Error404 from './pages/Error404/Error404';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import * as api from './api/index';
+
+import { RoomContext } from './context/room.context';
 
 import { useNavigate } from 'react-router-dom';
 
-function RoomChecker({ isRoomCreated }) {
-  const loc = window.location.href;
-  const roomId = loc.substring(loc.lastIndexOf('/') + 1);
+function RoomChecker({ isRoomCreated , roomId }) {
+
   const [ session, setSession ] = useState(null);
-  console.log(roomId);
+
+
   useEffect(() => {
     async function loadSession() {
       try {
@@ -24,29 +26,26 @@ function RoomChecker({ isRoomCreated }) {
     }
     loadSession();
   }, []);
-  if (session) {
+  if (isRoomCreated) {
     return <RoomPage />;
   } else {
     return <Error404 />;
   }
 }
 
-// function RoomChecker({ isRoomCreated }) {
-//   if (isRoomCreated) {
-//     return <RoomPage />;
-//   } else {
-//     return <h1 style={{ color: 'white' }}>Room not created</h1>;
-//   }
-// }
 
-function App() {
-  const [ isRoomCreated, setIsRoomCreated ] = useState(false);
+
+const  App = ()  => {
+
+
+  const {roomId, isRoomCreated, setIsRoomCreated} = useContext(RoomContext);
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePage isRoomCreated={isRoomCreated} setIsRoomCreated={setIsRoomCreated} />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/room/:1" element={<RoomChecker isRoomCreated={isRoomCreated} />} />
+        <Route path="/room/:1" element={<RoomChecker isRoomCreated={isRoomCreated} roomId={roomId} />} />
       </Routes>
     </div>
   );

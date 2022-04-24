@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid';
 import * as api from '../../api/index'
@@ -6,13 +6,14 @@ import NavBar from '../../components/NavBar/NavBar';
 
 import { ReactComponent as Productive} from '../../assets/frontpic.svg'
 
+import { RoomContext } from '../../context/room.context';
 
 
-
-const HomePage =  ({isRoomCreated,setIsRoomCreated}) => {
+const HomePage =  () => {
     
+    const {roomId ,setRoomId ,setIsRoomCreated} = useContext(RoomContext);
     
-    const [roomId,setRoomId] = useState()
+
     const [ idToCall, setIdToCall ] = useState('');
 
     const navigate = useNavigate();
@@ -24,6 +25,7 @@ const HomePage =  ({isRoomCreated,setIsRoomCreated}) => {
             const {data} = await api.createRoom({id:currentRoomId})
             if(data === currentRoomId){
                 setIsRoomCreated(true)
+                setRoomId(currentRoomId)
                 navigate(`room/${currentRoomId}`)
             }
         }catch(error){
