@@ -10,11 +10,9 @@ const RoomPage = () => {
 
   //const {roomId} = useContext(RoomContext);
 
-  
+
   return (
     <div>
-      <NavBar roomId={roomId} />
-
       <div
         class=" ml-8 my-5 mr-8 flex items-center bg-teal-600 text-white text-sm font-bold px-4 py-3 w-2/5"
         role="alert"

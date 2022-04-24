@@ -38,6 +38,7 @@ const HomePage =  () => {
             const {data} = await api.joinRoom({id:idToCall})
             if(data === "successfull"){
                 setIsRoomCreated(true)
+                setRoomId(idToCall)
                 navigate(`room/${idToCall}`)
             }
         }catch(error){
@@ -51,7 +52,6 @@ const HomePage =  () => {
     return(
         <>
             <div >
-                <NavBar  roomId={roomId}/>
                 <div className='container mx-auto flex justify-between items-center py-5'>
                     <div className='flex flex-col'>
                     <div className='text-white py-3 px-6 m-2 font-Montserrat text-4xl'>HUDDL YOUR ONE STOP REALTIME COLLAB TOOL</div>
