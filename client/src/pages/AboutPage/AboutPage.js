@@ -6,7 +6,6 @@ const AboutPage = () => {
     const roomId = ''
     return (
         <div className='About'>
-            <NavBar  roomId={roomId}/>
             <div className="flex flex-row justify-center items-start my-24 mx-28">
                 <div className='mx - 5 w-2/4'>
                     <h1 className="text-indigo-400 text-3xl font-bold my-4">The HUDDL STORY</h1>

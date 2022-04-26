@@ -1,13 +1,18 @@
 import TextEditor from '../../components/TextEditor/TextEditor';
 import NavBar from '../../components/NavBar/NavBar';
 
+import { RoomContext } from '../../context/room.context';
+import { useContext } from 'react';
+
 const RoomPage = () => {
   const loc = window.location.href;
   const roomId = loc.substring(loc.lastIndexOf('/') + 1);
+
+  //const {roomId} = useContext(RoomContext);
+
+
   return (
     <div>
-      <NavBar roomId={roomId} />
-
       <div
         class=" ml-8 my-5 mr-8 flex items-center bg-teal-600 text-white text-sm font-bold px-4 py-3 w-2/5"
         role="alert"
