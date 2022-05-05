@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@hocuspocus/extension-rocksdb": "^1.0.0-alpha.103",
+    "@hocuspocus/provider": "^1.0.0-alpha.36",
+    "@hocuspocus/server": "^1.0.0-alpha.102",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",

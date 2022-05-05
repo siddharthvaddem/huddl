@@ -13,6 +13,8 @@ import './TextEditor.css';
 import { IndexeddbPersistence } from 'y-indexeddb';
 import * as api from '../../api/index';
 import swal from 'sweetalert';
+import { HocuspocusProvider } from '@hocuspocus/provider'
+
 
 const colors = [ '#958DF1', '#F98181', '#FBBC88', '#FAF594', '#70CFF8', '#94FADB', '#B9F18D' ];
 const rooms = [ 'rooms.10', 'rooms.11', 'rooms.12' ];
@@ -52,9 +54,17 @@ const getRandomName = () => getRandomElement(names);
 
 const room = getRandomRoom();
 
+
+
+
 const ydoc = new Y.Doc();
 // Registered with a WebRTC provider
-const provider = new WebrtcProvider('example-document', ydoc);
+//const provider = new WebrtcProvider('example-document', ydoc);
+
+const provider = new HocuspocusProvider({
+  url: 'ws://127.0.0.1:1234',
+  name: 'current-doc',
+})
 
 new IndexeddbPersistence('example-document', ydoc); //offline session support for sudden session loss
 
@@ -76,6 +86,9 @@ const TextEditor = () => {
   const [finishStatus, setfinishStatus] = useState(false);
   const [ currentUser, setCurrentUser ] = useState(getInitialUser);
   const [ json, setJson ] = useState({});
+
+ 
+
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -86,7 +99,7 @@ const TextEditor = () => {
       TaskList,
       TaskItem,
       Collaboration.configure({
-        document: ydoc
+        document: provider.document,
       }),
       CollaborationCursor.configure({
         provider: provider
